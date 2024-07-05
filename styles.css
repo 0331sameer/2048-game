@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #FDCCC0;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #eda4d1;
+    color: #58044a;
+}
+
+#header-left, #header-center, #header-right {
+    margin-left: 15px;
+}
+
+#header-center {
+    justify-content: center;
+}
+
+#header-right {
+    margin-right: 15px;
+}
+
+#header #new-game {
+    border-color: transparent;
+    width: 150px;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    color: #58044a;
+    background-color: #c1338b;
+    border-radius: 5px;
+}
+
+#header #new-game:hover {
+    background-color: #ffffff;
+    border-color: #da53a4;
+    color: #c1338b;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 0px 10px #c1338b;
+    border-radius: 5px;
+}
+
+#header h1 {
+    font-size: 45px;
+    font-weight: bolder;
+    margin: 0px;
+    padding: 10px;
+}
+
+#header .score-div { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    background-color: #eda4d1;
+    color: #58044a;
+}
+
+#header #score, #header #best-score {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(203, 125, 190);
+    border-radius: 10px;
+}
+
+.grid-cell {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #FBADAF;
+    text-align: center;
+    font-weight: bolder;
+    color: #96616B;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.grid-cell.moving {
+    animation: slide 0.2s ease-in-out forwards;
+}
+
+@keyframes slide {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(100px, 100px); /* Adjust as necessary */
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.grid-cell.new {
+    animation: pop 0.2s ease-out;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #58044a;
+    width: 100%;
+    background-color: #eda4d1;
+    padding-bottom: 15px;
+}
+
+footer a {
+    color: #58044a;
+    text-decoration: none;
+    margin: 0 10px;
+}
