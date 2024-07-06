@@ -135,7 +135,6 @@ body {
         gap: 5px;
         padding: 5px;
         margin: 5px;
-        margin-bottom: 100px;
     }
 
     .grid-cell {
@@ -176,5 +175,5 @@ footer {
 footer a {
     color: #58044a;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0px 10px;
 }
