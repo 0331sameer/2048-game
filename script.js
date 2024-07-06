@@ -6,6 +6,8 @@ const newGameButton = document.getElementById('new-game');
 let board_array = [];
 let score = 0;
 let bestScore = localStorage.getItem('bestScore') || 0;
+let countgoal = 0;
+let nomoves = 0;
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${score}`;
@@ -127,6 +129,9 @@ function moving() {
             c += d; d = 0;
             score += c;
         }
+        else {
+            nomoves++;
+        }
     }
 }
 
@@ -220,6 +225,8 @@ function move(action) {
     insertrandom();
     updateBoard();
     updateScoreDisplay();
+    if (countgoal == 0) checkWinCondition();
+    if (nomoves == 4) { nomoves = 0; showLosePopup(); }
 }
 
 function updateBoard() {
@@ -245,6 +252,7 @@ document.addEventListener('keydown', (event) => {
 newGameButton.addEventListener('click', () => {
     initializeBoard();
     score = 0;
+    countgoal = 0;
     updateScoreDisplay();
 });
 
@@ -289,3 +297,52 @@ function handleTouchMove(evt) {
 // Add touch event listeners
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
+
+let winPopup = document.getElementById('popup');
+let losePopup = document.getElementById('popup1');
+let newGameLoseBtn = document.getElementById('new-game-popup-lose');
+let continueBtn = document.getElementById('continue-game');
+let newGameBtn = document.getElementById('new-game-popup');
+
+function checkWinCondition() {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (board_array[i][j] === 2048) {
+                showWinPopup();
+                countgoal++;
+                return;
+            }
+        }
+    }
+}
+
+function showWinPopup() {
+    winPopup.classList.add('active');
+}
+
+function hideWinPopup() {
+    winPopup.classList.remove('active');
+}
+
+continueBtn.addEventListener('click', () => {
+    hideWinPopup();
+});
+
+newGameBtn.addEventListener('click', () => {
+    hideWinPopup();
+    initializeBoard();
+    countgoal = 0;
+});
+
+function showLosePopup() {
+    losePopup.classList.add('active');
+}
+
+function hideLosePopup() {
+    losePopup.classList.remove('active');
+}
+
+newGameLoseBtn.addEventListener('click', () => {
+    hideLosePopup();
+    initializeBoard(); // Reset the game
+});
