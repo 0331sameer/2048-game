@@ -250,3 +250,42 @@ newGameButton.addEventListener('click', () => {
 
 initializeBoard();
 updateScoreDisplay();
+
+function handleTouchStart(evt) {
+    startX = evt.touches[0].clientX;
+    startY = evt.touches[0].clientY;
+    evt.preventDefault();
+}
+
+function handleTouchMove(evt) {
+    if (!startX || !startY) {
+        return;
+    }
+
+    var endX = evt.touches[0].clientX;
+    var endY = evt.touches[0].clientY;
+
+    var deltaX = endX - startX;
+    var deltaY = endY - startY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            move('right');
+        } else {
+            move('left');
+        }
+    } else {
+        if (deltaY > 0) {
+            move('down');
+        } else {
+            move('up');
+        }
+    }
+
+    startX = startY = null;
+    evt.preventDefault();
+}
+
+// Add touch event listeners
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
