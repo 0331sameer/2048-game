@@ -167,6 +167,7 @@ footer {
     width: 100%;
     background-color: #eda4d1;
     padding-bottom: 15px;
+    margin-top: auto; 
 }
 
 footer a {
