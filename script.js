@@ -204,6 +204,7 @@ function insertrandom() {
 }
 
 function move(action) {
+    nomoves = 0;
     switch (action) {
         case 'up':
             for (let i = 0; i < 4; i++) moveup(i); 
@@ -226,7 +227,9 @@ function move(action) {
     updateBoard();
     updateScoreDisplay();
     if (countgoal == 0) checkWinCondition();
-    if (nomoves == 4) { nomoves = 0; showLosePopup(); }
+    if (checkLoseCondition()) {
+        showLosePopup();
+    }
 }
 
 function updateBoard() {
@@ -333,6 +336,19 @@ newGameBtn.addEventListener('click', () => {
     initializeBoard();
     countgoal = 0;
 });
+
+function checkLoseCondition() {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (board_array[i][j] === 0) return false;
+            if (i > 0 && board_array[i][j] === board_array[i-1][j]) return false;
+            if (i < 3 && board_array[i][j] === board_array[i+1][j]) return false;
+            if (j > 0 && board_array[i][j] === board_array[i][j-1]) return false;
+            if (j < 3 && board_array[i][j] === board_array[i][j+1]) return false;
+        }
+    }
+    return true;
+}
 
 function showLosePopup() {
     losePopup.classList.add('active');
