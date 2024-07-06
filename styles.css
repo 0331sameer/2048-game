@@ -135,6 +135,7 @@ body {
         gap: 5px;
         padding: 5px;
         margin: 5px;
+        margin-bottom: 100px;
     }
 
     .grid-cell {
