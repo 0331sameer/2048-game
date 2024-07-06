@@ -16,7 +16,7 @@ How to Play
 Use arrow keys (Up, Down, Left, Right) to move tiles.
 Tiles with the same number merge into one when they touch.
 Development Setup
-Clone the repository: git clone https://github.com/your-username/2048-game.git
+Clone the repository: git clone https://github.com/0331sameer/2048-game
 Open index.html in your browser to play the game locally.
 Screenshots
 
