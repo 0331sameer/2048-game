@@ -138,8 +138,8 @@ body {
     }
 
     .grid-cell {
-        height: 60px;
-        width: 60px;
+        height: 75px;
+        width: 75px;
         font-size: 20px;
     }
 
@@ -157,6 +157,10 @@ body {
     #header .score-div {
         flex-direction: column;
     }
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
 }
 
 
@@ -167,7 +171,6 @@ footer {
     width: 100%;
     background-color: #eda4d1;
     padding-bottom: 15px;
-    margin-top: auto; 
 }
 
 footer a {
